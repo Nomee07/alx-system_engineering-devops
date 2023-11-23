@@ -6,13 +6,14 @@ hour=0
 
 while [ $hour -lt 12 ]
 do
+    echo "hour: $hour"
     minute=1
 
-    while [ $minute -le 59 ]
+    while [ $minute -lt 60 ]
 do
-        printf "%02d:%02d\n" $hour $minute
-        ((minute++))
+        echo $minute
+        let minute+=1
     done
 
-    ((hour++))
-done | head -n 70
+    let hour+=1
+done

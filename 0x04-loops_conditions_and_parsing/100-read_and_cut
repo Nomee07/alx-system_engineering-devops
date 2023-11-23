@@ -2,12 +2,8 @@
 # Bash script to display specific information
 
 
-IFS=":"
-
-while read -r username x uid gid info home shell
+input="/etc/passwd"
+while IFS= read -r line
 do
-
-    echo "Username: $username"
-    echo "User ID: $uid"
-    echo "Home Directory: $home"
-done < /etc/passwd
+    echo "$line" | cut -d':' --fields=1,3,6
+done < "$input"

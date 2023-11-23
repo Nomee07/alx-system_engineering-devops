@@ -2,15 +2,8 @@
 # Bash script to display the content of the current dir
 
 
-for file in *
+for i in *
 do
 
-    if [[ $file != .* ]]
-then
-
-        name_part=$(echo "$file" | cut -d'-' -f2-)
-        
-
-        echo "- $name_part"
-    fi
+    echo "$i" | cut -d'-' -f2
 done
