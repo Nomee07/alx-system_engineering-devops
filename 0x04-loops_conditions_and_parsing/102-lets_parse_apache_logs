@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 # parses an Apache log file and displays the IP and HTTP code for each visitor.
 
-awk '{print $1,$9}' apache-access.log
+
+if [ ! -f apache-access.log ]
+then
+    echo "Error: apache-access.log file not found."
+    exit 1
+fi
+
+awk '{print $1, $9}' apache-access.log
