@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-
-
 # Bash script to display the content of the current dir
 
 
-for file in *; do
+for file in *
+do
 
-    if [[ $file != .* ]]; then
+    if [[ $file != .* ]]
+then
 
         name_part=$(echo "$file" | cut -d'-' -f2-)
         

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-
-
 # Bash script to display specific information
+
 
 IFS=":"
 
-while read -r username x uid gid info home shell; do
+while read -r username x uid gid info home shell
+do
 
     echo "Username: $username"
     echo "User ID: $uid"
