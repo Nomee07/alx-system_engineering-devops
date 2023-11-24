@@ -2,5 +2,14 @@
 # Stop the 7-highlander process instead of the 4-to_infinity_and_beyond one
 
 
-pid=$(pgrep -f '7-highlander')
-kill -SIGTERM "$pid"
+pid=$(pgrep -f "7-highlander")
+
+
+if [ -n "$pid" ]
+then
+  echo "Stopping 7-highlander process with PID $pid..."
+  kill -TERM "$pid"
+  echo "Process stopped."
+else
+  echo "7-highlander process is not running."
+fi

@@ -2,10 +2,17 @@
 # Bash script that displays to infinity and beyond indefinitely
 
 
-trap 'echo "I am invincible!!!"; exit' SIGTERM
+terminate_process()
+{
+  echo "I am invincible!!!"
+  exit 0
+}
+
+
+trap terminate_process SIGTERM
 
 while true
 do
-    echo "To infinity and beyond"
-    sleep 2
+  echo "To infinity and beyond indefinitely"
+  sleep 2
 done
