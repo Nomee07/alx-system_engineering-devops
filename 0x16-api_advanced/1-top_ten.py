@@ -18,10 +18,14 @@ def top_ten(subreddit):
         params={"limit": 10},
     )
 
-    if req.status_code == 200:
-        for get_data in req.json().get("data").get("children"):
-            dat = get_data.get("data")
-            title = dat.get("title")
-            print(title)
+    if req.status_code == 200: 
+        response_data = req.json()
+        if "data" in response_data:
+            for get_data in response_data["data"].get("children", []):
+                dat = get_data.get("data")
+                title = dat.get("title")
+                print(title)
+        else:
+            print("No data found for the subreddit.")
     else:
-        print(None)
+        print("Error:", req.status_code)
