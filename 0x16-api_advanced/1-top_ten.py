@@ -18,7 +18,7 @@ def top_ten(subreddit):
         params={"limit": 10},
     )
 
-    print(req.text)  # Print response text for debugging
+    print(req.json())  # Print response as JSON for debugging
 
     if req.status_code == 200:
         try:
