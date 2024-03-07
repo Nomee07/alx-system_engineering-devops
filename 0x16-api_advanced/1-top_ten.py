@@ -13,19 +13,17 @@ def top_ten(subreddit):
     - If not a valid subreddit, print None.
     """
     req = requests.get(
-        "https://www.reddit.com/r/{}/hot.json".format(subreddit),
+        f"https://www.reddit.com/r/{subreddit}/hot.json",
         headers={"User-Agent": "Custom"},
         params={"limit": 10},
     )
 
-    if req.status_code == 200: 
-        response_data = req.json()
-        if "data" in response_data:
-            for get_data in response_data["data"].get("children", []):
-                dat = get_data.get("data")
-                title = dat.get("title")
-                print(title)
-        else:
-            print("No data found for the subreddit.")
+    if req.status_code == 200:
+        try:
+            data = req.json()["data"]["children"]
+            for post in data:
+                print(post["data"]["title"])
+        except KeyError:
+            print("Subreddit does not exist or has no posts.")
     else:
-        print("Error:", req.status_code)
+        print("Failed to retrieve data from Reddit API.")
