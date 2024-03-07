@@ -18,6 +18,8 @@ def top_ten(subreddit):
         params={"limit": 10},
     )
 
+    print(req.text)  # Print response text for debugging
+
     if req.status_code == 200:
         try:
             data = req.json()["data"]["children"]
